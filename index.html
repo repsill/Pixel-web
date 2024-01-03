@@ -3,7 +3,28 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>Pixel Web</title>
 	</head>
-	<body></body>
+	<body>
+		<canvas id="canvas" width="1280" height="720"></canvas>
+		<script>
+			const canvas = document.getElementById('canvas')
+			const resize = () => {
+				scale = window.innerWidth / canvas.width
+				if (
+					window.innerHeight / canvas.height <
+					window.innerWidth / canvas.width
+				) {
+					scale = window.innerHeight / canvas.height
+				}
+				canvas.style.transform = 'scale(' + scale + ')'
+				canvasLeft = (1 / 2) * (window.innerWidth - canvas.width)
+				canvas.style.left = (1 / 2) * (window.innerWidth - canvas.width) + 'px'
+				canvas.style.top = (1 / 2) * (window.innerHeight - canvas.height) + 'px'
+			}
+
+			window.onload = resize
+			window.onresize = resize
+		</script>
+	</body>
 </html>
